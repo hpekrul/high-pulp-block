@@ -31,11 +31,18 @@ import './editor.scss';
  */
 export default function Edit() {
 	return (
-		<p { ...useBlockProps() }>
-			{ __(
-				'High Pulp Blocks – hello from the editor!',
-				'high-pulp-blocks'
-			) }
-		</p>
+		<div { ...useBlockProps() }>
+			<div className="stars">★★★</div>
+			<div className="quote">I love cake.</div>
+			<div className="quote-profile">
+				<div className="photo">
+					<img src="https://placehold.it/75" alt="Photo of Eric Foreman" />
+				</div>
+				<div className="text">
+					<p className="author">Eric Foreman</p>
+					<p className="location">Point Place, WI</p>
+				</div>
+			</div>
+		</div>
 	);
 }

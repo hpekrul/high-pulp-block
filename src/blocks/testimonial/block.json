@@ -1,12 +1,12 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "hp/high-pulp-blocks",
+	"name": "hp/testimonial",
 	"version": "0.1.0",
-	"title": "High Pulp Blocks",
+	"title": "Pulpy Testimonial",
 	"category": "design",
 	"icon": "smiley",
-	"description": "High Pulp blocks 100% original",
+	"description": "Extra pulpy testimonial",
 	"example": {},
 	"supports": {
 		"html": false
@@ -15,5 +15,6 @@
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",
-	"viewScript": "file:./view.js"
+	"viewScript": "file:./view.js",
+  	"keywords": ["testimonial", "hp", "pulp"]
 }
