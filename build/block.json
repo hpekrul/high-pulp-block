@@ -1,0 +1,19 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "hp/high-pulp-blocks",
+  "version": "0.1.0",
+  "title": "High Pulp Blocks",
+  "category": "design",
+  "icon": "smiley",
+  "description": "High Pulp blocks 100% original",
+  "example": {},
+  "supports": {
+    "html": false
+  },
+  "textdomain": "high-pulp-blocks",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "viewScript": "file:./view.js"
+}
