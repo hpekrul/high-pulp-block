@@ -4,7 +4,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps } from '@wordpress/block-editor';
+import { useBlockProps, RichText } from '@wordpress/block-editor';
 
 /**
  * The save function defines the way in which the different attributes should
@@ -15,18 +15,21 @@ import { useBlockProps } from '@wordpress/block-editor';
  *
  * @return {Element} Element to render.
  */
-export default function save() {
+export default function save({attributes}) {
+	let starIcons = Array(5).fill('★', 0, attributes.stars).join('');
 	return (
 		<div { ...useBlockProps.save() }>
-			<div className="stars">★★★</div>
-			<div className="quote">I love cake.</div>
+			<div className="stars">{starIcons}</div>
+			<RichText.Content className="quote"
+								 tagName="div"
+								value={attributes.quote}></RichText.Content>
 			<div className="quote-profile">
 				<div className="photo">
-					<img src="https://placehold.it/75" alt="Photo of Eric Foreman" />
+					<img src={attributes.imgUrl} alt="Photo of Eric Foreman" />
 				</div>
 				<div className="text">
-					<p className="author">Eric Foreman</p>
-					<p className="location">Point Place, WI</p>
+					<p className="author">{attributes.author}</p>
+					<p className="location">{attributes.location}</p>
 				</div>
 			</div>
 		</div>

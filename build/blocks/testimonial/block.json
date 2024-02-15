@@ -20,5 +20,30 @@
     "testimonial",
     "hp",
     "pulp"
-  ]
+  ],
+  "attributes": {
+    "quote": {
+      "type": "string",
+      "source": "html",
+      "selector": ".quote"
+    },
+    "stars": {
+      "type": "number",
+      "default": 3
+    },
+    "imgUrl": {
+      "type": "string",
+      "default": "https://placehold.it/75"
+    },
+    "author": {
+      "type": "string",
+      "source": "text",
+      "selector": ".author"
+    },
+    "location": {
+      "type": "string",
+      "source": "text",
+      "selector": ".location"
+    }
+  }
 }

@@ -11,7 +11,8 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps } from '@wordpress/block-editor';
+
+import { useBlockProps, RichText, PlainText, MediaUpload, MediaUploadCheck } from '@wordpress/block-editor';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -20,6 +21,9 @@ import { useBlockProps } from '@wordpress/block-editor';
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
 import './editor.scss';
+import {SelectControl} from "@wordpress/components";
+import StarRating from "../../components/StarRating";
+
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -29,18 +33,65 @@ import './editor.scss';
  *
  * @return {Element} Element to render.
  */
-export default function Edit() {
+export default function Edit( { attributes, setAttributes }) {
+	//const attributes = props.attributes;
+	//const {attributes, setAttributes} = props;
 	return (
 		<div { ...useBlockProps() }>
-			<div className="stars">★★★</div>
-			<div className="quote">I love cake.</div>
+			<div className="stars">
+				{/*<SelectControl*/}
+				{/*	label="Select a Rating"*/}
+				{/*	value={attributes.stars}*/}
+				{/*	onChange={stars => setAttributes({stars: parseInt(stars)})}*/}
+				{/*	options={[*/}
+				{/*		{value: 1, label: '★'},*/}
+				{/*		{value: 2, label: '★★'},*/}
+				{/*		{value: 3, label: '★★★'},*/}
+				{/*		{value: 4, label: '★★★★'},*/}
+				{/*		{value: 5, label: '★★★★★'}*/}
+				{/*	]}*/}
+				{/*	/>*/}
+				<StarRating rating={attributes.stars}
+							setRating={stars => setAttributes({stars: parseInt(stars)})}
+				/>
+			</div>
+			<RichText
+				className="quote"
+				tagName="div"
+				placeholder="I love cake."
+				value={attributes.quote}
+				//onChange={ ( content ) => setAttributes( { quote: content } ) }
+				onChange={ ( quote ) => setAttributes( { quote } ) }
+				/>
+			{/*<div className="quote">I love cake.</div>*/}
 			<div className="quote-profile">
 				<div className="photo">
-					<img src="https://placehold.it/75" alt="Photo of Eric Foreman" />
+					<MediaUploadCheck>
+						<MediaUpload
+							allowedTypes={['image']}
+							onSelect={ file => {
+								console.log(file);
+								setAttributes({imgUrl: file.sizes.thumbnail.url});
+							}
+						}
+							render={({open}) => <img src={attributes.imgUrl}
+													 alt="upload a photo"
+													 onClick={open}
+								/>}
+						></MediaUpload>
+					</MediaUploadCheck>
 				</div>
 				<div className="text">
-					<p className="author">Eric Foreman</p>
-					<p className="location">Point Place, WI</p>
+					<PlainText className="author"
+							   placeholder="Eric Foreman"
+							   value={attributes.author}
+							   onChange={author => setAttributes({author})}
+					/>
+					<PlainText className="location"
+							   placeholder="Point Place, WI"
+							   value={attributes.location}
+							   onChange={location => setAttributes({location})}
+					/>
 				</div>
 			</div>
 		</div>
