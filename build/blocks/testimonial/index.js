@@ -2,6 +2,78 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/blocks/testimonial/BlockSettings.js":
+/*!*************************************************!*\
+  !*** ./src/blocks/testimonial/BlockSettings.js ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   BlockSettings: () => (/* binding */ BlockSettings)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+
+class BlockSettings extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component) {
+  render() {
+    const {
+      attributes,
+      setAttributes
+    } = this.props;
+    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+      title: "Basic",
+      initialOpen: true
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
+      label: "Quote Background Color",
+      value: attributes.backgroundColorClass,
+      onChange: backgroundColorClass => setAttributes({
+        backgroundColorClass
+      }),
+      options: [{
+        value: '',
+        label: 'Default'
+      }, {
+        value: 'bg-primary-blue',
+        label: 'Primary Blue'
+      }, {
+        value: 'bg-primary-red',
+        label: 'Primary Red'
+      }]
+    })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, "Border Color"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ColorPalette, {
+      colors: [{
+        name: 'blue',
+        color: '#0000FF'
+      }, {
+        name: 'red',
+        color: '#FF0000'
+      }, {
+        name: 'lilac',
+        color: '#B1B1F5'
+      }],
+      value: attributes.borderColor,
+      onChange: borderColor => setAttributes({
+        borderColor
+      }),
+      disableCustomColors: true
+    })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, "Text Color"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ColorPicker, {
+      color: attributes.textColor,
+      onChange: textColor => setAttributes({
+        textColor
+      })
+    }))));
+  }
+}
+
+/***/ }),
+
 /***/ "./src/blocks/testimonial/edit.js":
 /*!****************************************!*\
   !*** ./src/blocks/testimonial/edit.js ***!
@@ -22,6 +94,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _components_StarRating__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/StarRating */ "./src/components/StarRating.js");
+/* harmony import */ var _BlockSettings__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./BlockSettings */ "./src/blocks/testimonial/BlockSettings.js");
 
 /**
  * Retrieves the translation of text.
@@ -49,6 +122,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 /**
  * The edit function describes the structure of your block in the context of the
  * editor. This represents what the editor will render when the block is used.
@@ -63,9 +137,19 @@ function Edit({
 }) {
   //const attributes = props.attributes;
   //const {attributes, setAttributes} = props;
+  const divStyles = {
+    borderColor: attributes.borderColor,
+    color: attributes.textColor
+  };
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)()
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)({
+      className: attributes.backgroundColorClass,
+      style: divStyles
+    })
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_BlockSettings__WEBPACK_IMPORTED_MODULE_6__.BlockSettings, {
+    attributes: attributes,
+    setAttributes: setAttributes
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "stars"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_StarRating__WEBPACK_IMPORTED_MODULE_5__["default"], {
     rating: attributes.stars,
@@ -212,8 +296,15 @@ function save({
   attributes
 }) {
   let starIcons = Array(5).fill('★', 0, attributes.stars).join('');
+  const divStyles = {
+    borderColor: attributes.borderColor,
+    color: attributes.textColor
+  };
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save()
+    ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save({
+      className: attributes.backgroundColorClass,
+      style: divStyles
+    })
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "stars"
   }, starIcons), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
@@ -374,7 +465,7 @@ module.exports = window["wp"]["i18n"];
   \*******************************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"hp/testimonial","version":"0.1.0","title":"Pulpy Testimonial","category":"design","icon":"smiley","description":"Extra pulpy testimonial","example":{},"supports":{"html":false},"textdomain":"high-pulp-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","keywords":["testimonial","hp","pulp"],"attributes":{"quote":{"type":"string","source":"html","selector":".quote"},"stars":{"type":"number","default":3},"imgUrl":{"type":"string","default":"https://placehold.it/75"},"author":{"type":"string","source":"text","selector":".author"},"location":{"type":"string","source":"text","selector":".location"}}}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"hp/testimonial","version":"0.1.0","title":"Pulpy Testimonial","category":"design","icon":"smiley","description":"Extra pulpy testimonial","example":{},"supports":{"html":false},"textdomain":"high-pulp-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","keywords":["testimonial","hp","pulp"],"attributes":{"quote":{"type":"string","source":"html","selector":".quote"},"stars":{"type":"number","default":3},"imgUrl":{"type":"string","default":"https://placehold.it/75"},"author":{"type":"string","source":"text","selector":".author"},"location":{"type":"string","source":"text","selector":".location"},"backgroundColorClass":{"type":"string"},"borderColor":{"type":"string"},"textColor":{"type":"string"}}}');
 
 /***/ })
 

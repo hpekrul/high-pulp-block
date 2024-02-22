@@ -23,6 +23,7 @@ import { useBlockProps, RichText, PlainText, MediaUpload, MediaUploadCheck } fro
 import './editor.scss';
 import {SelectControl} from "@wordpress/components";
 import StarRating from "../../components/StarRating";
+import {BlockSettings} from "./BlockSettings";
 
 
 /**
@@ -36,8 +37,13 @@ import StarRating from "../../components/StarRating";
 export default function Edit( { attributes, setAttributes }) {
 	//const attributes = props.attributes;
 	//const {attributes, setAttributes} = props;
+	const divStyles = {
+		borderColor: attributes.borderColor,
+		color: attributes.textColor,
+	}
 	return (
-		<div { ...useBlockProps() }>
+		<div { ...useBlockProps({className: attributes.backgroundColorClass, style: divStyles}) } >
+			<BlockSettings attributes={attributes} setAttributes={setAttributes} />
 			<div className="stars">
 				{/*<SelectControl*/}
 				{/*	label="Select a Rating"*/}
