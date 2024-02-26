@@ -9,10 +9,14 @@ function addBorderAttributes(settings, name) {
 		type: 'string',
 		default: '',
 	}
+	settings.attributes.borderPadding = {
+		type: 'number',
+		default: 10,
+	}
 
 	// (modify any additional settings)
 
 	return settings;
 }
 
-addFilter('blocks.registerBlockType', 'your-plugin-name/border-control/add-border-attributes', addBorderAttributes);
+addFilter('blocks.registerBlockType', 'hp/border-control/add-border-attributes', addBorderAttributes);
