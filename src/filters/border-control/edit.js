@@ -1,7 +1,7 @@
 import {createHigherOrderComponent} from '@wordpress/compose';
 import {Fragment} from '@wordpress/element';
-import {InspectorControls} from "@wordpress/block-editor";
-import {PanelBody, PanelRow, SelectControl, TextControl} from "@wordpress/components";
+import {InspectorControls, PanelColorSettings} from "@wordpress/block-editor";
+import {PanelBody, PanelRow, RangeControl, SelectControl, TextControl} from "@wordpress/components";
 import {addFilter} from '@wordpress/hooks';
 import React from "react";
 
@@ -14,9 +14,10 @@ function blockWrapper(WrappedBlock) {
 
 			let divStyles = {
 				borderStyle: attributes.borderStyle || 'none',
-				borderWidth: '2px',
-				borderColor: 'black',
+				borderWidth: attributes.borderWidth + 'px',
+				borderColor: attributes.borderColor || 'black',
 				padding: attributes.borderPadding + 'px',
+				borderRadius: attributes.borderRadius + 'px',
 			}
 
 			return (
@@ -44,6 +45,30 @@ function blockWrapper(WrappedBlock) {
 									onChange={value => setAttributes({borderPadding: parseInt(value)})}
 								/> px
 							</PanelRow>
+								<RangeControl
+									style={{width: '100%'}}
+									label="Border Width"
+									value={attributes.borderWidth}
+									onChange={value => setAttributes({borderWidth: parseInt(value)})}
+									min={2}
+									max={80}
+								/>
+								<RangeControl
+									label="Border Radius"
+									value={attributes.borderRadius}
+									onChange={value => setAttributes({borderRadius: parseInt(value)})}
+									min={2}
+									max={80}
+								/>
+								<PanelColorSettings
+									title="Border Colors"
+									colorSettings={[
+										{label: "Border Color",
+											value: attributes.borderColor,
+											onChange: borderColor => setAttributes({borderColor})
+										},
+									]}
+								/>
 						</PanelBody>
 					</InspectorControls>
 

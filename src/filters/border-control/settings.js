@@ -13,6 +13,18 @@ function addBorderAttributes(settings, name) {
 		type: 'number',
 		default: 10,
 	}
+	settings.attributes.borderWidth = {
+		type: 'number',
+		default: 10,
+	}
+	settings.attributes.borderRadius = {
+		type: 'number',
+		default: 10,
+	}
+	settings.attributes.borderColor = {
+		type: 'string',
+		default: 'black',
+	}
 
 	// (modify any additional settings)
 

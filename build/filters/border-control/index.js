@@ -40,9 +40,10 @@ function blockWrapper(WrappedBlock) {
       } = this.props;
       let divStyles = {
         borderStyle: attributes.borderStyle || 'none',
-        borderWidth: '2px',
-        borderColor: 'black',
-        padding: attributes.borderPadding + 'px'
+        borderWidth: attributes.borderWidth + 'px',
+        borderColor: attributes.borderColor || 'black',
+        padding: attributes.borderPadding + 'px',
+        borderRadius: attributes.borderRadius + 'px'
       };
       return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
         title: "Border Controls",
@@ -72,7 +73,35 @@ function blockWrapper(WrappedBlock) {
         onChange: value => setAttributes({
           borderPadding: parseInt(value)
         })
-      }), " px"))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      }), " px"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.RangeControl, {
+        style: {
+          width: '100%'
+        },
+        label: "Border Width",
+        value: attributes.borderWidth,
+        onChange: value => setAttributes({
+          borderWidth: parseInt(value)
+        }),
+        min: 2,
+        max: 80
+      }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.RangeControl, {
+        label: "Border Radius",
+        value: attributes.borderRadius,
+        onChange: value => setAttributes({
+          borderRadius: parseInt(value)
+        }),
+        min: 2,
+        max: 80
+      }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.PanelColorSettings, {
+        title: "Border Colors",
+        colorSettings: [{
+          label: "Border Color",
+          value: attributes.borderColor,
+          onChange: borderColor => setAttributes({
+            borderColor
+          })
+        }]
+      }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
         className: "wp-block",
         style: divStyles
       }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(WrappedBlock, {
@@ -114,6 +143,18 @@ function addBorderAttributes(settings, name) {
   settings.attributes.borderPadding = {
     type: 'number',
     default: 10
+  };
+  settings.attributes.borderWidth = {
+    type: 'number',
+    default: 10
+  };
+  settings.attributes.borderRadius = {
+    type: 'number',
+    default: 10
+  };
+  settings.attributes.borderColor = {
+    type: 'string',
+    default: 'black'
   };
 
   // (modify any additional settings)
