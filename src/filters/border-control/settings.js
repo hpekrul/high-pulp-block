@@ -23,7 +23,7 @@ function addBorderAttributes(settings, name) {
 	}
 	settings.attributes.borderColor = {
 		type: 'string',
-		default: 'black',
+		default: '',
 	}
 
 	// (modify any additional settings)

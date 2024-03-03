@@ -19,6 +19,10 @@ function blockWrapper(WrappedBlock) {
 				padding: attributes.borderPadding + 'px',
 				borderRadius: attributes.borderRadius + 'px',
 			}
+			//remove styles if no border style
+			if(divStyles.borderStyle === 'none'){
+				divStyles = {};
+			}
 
 			return (
 				<Fragment>

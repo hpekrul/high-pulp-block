@@ -45,6 +45,10 @@ function blockWrapper(WrappedBlock) {
         padding: attributes.borderPadding + 'px',
         borderRadius: attributes.borderRadius + 'px'
       };
+      //remove styles if no border style
+      if (divStyles.borderStyle === 'none') {
+        divStyles = {};
+      }
       return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
         title: "Border Controls",
         initialOpen: false
@@ -154,7 +158,7 @@ function addBorderAttributes(settings, name) {
   };
   settings.attributes.borderColor = {
     type: 'string',
-    default: 'black'
+    default: ''
   };
 
   // (modify any additional settings)
