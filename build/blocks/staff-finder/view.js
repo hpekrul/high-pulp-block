@@ -31,7 +31,7 @@ class BlockApp extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component) 
     super(props);
 
     //ajax call
-    fetch('/wp-json/wp/v2/staff').then(response => response.json()).then(json => {
+    fetch('/wp-json/wp/v2/staff?_embed').then(response => response.json()).then(json => {
       console.log(json);
       this.setState({
         staff: json,
@@ -90,7 +90,7 @@ __webpack_require__.r(__webpack_exports__);
 
 class StaffList extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component) {
   render() {
-    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", null, this.props.staff.map(person => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_StaffListItem__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, this.props.staff.map(person => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_StaffListItem__WEBPACK_IMPORTED_MODULE_1__["default"], {
       person: person
     })));
   }
@@ -117,7 +117,18 @@ class StaffListItem extends (react__WEBPACK_IMPORTED_MODULE_0___default().Compon
     const {
       person
     } = this.props;
-    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", null, person.title.rendered);
+    console.log(person._embedded['wp:featuredmedia']['0']);
+    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "flip-card"
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "flip-card-inner"
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "flip-card-front"
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+      src: person._embedded['wp:featuredmedia']['0']?.media_details?.sizes?.thumbnail?.source_url
+    })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "flip-card-back"
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, person.title.rendered), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, person.acf.staff_position))));
   }
 }
 
