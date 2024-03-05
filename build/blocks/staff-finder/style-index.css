@@ -9,8 +9,9 @@
  */
 .wp-block-hp-staff-finder {
   padding: 10px;
+}
+.wp-block-hp-staff-finder .staffFinder {
   display: flex;
-  flex-wrap: wrap;
 }
 .wp-block-hp-staff-finder .flip-card {
   display: block;

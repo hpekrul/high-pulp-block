@@ -7,8 +7,9 @@
 
 .wp-block-hp-staff-finder {
   padding: 10px;
-  display: flex;
-  flex-wrap: wrap;
+  .staffFinder {
+	display: flex;
+  }
 
   .flip-card {
 	display: block;

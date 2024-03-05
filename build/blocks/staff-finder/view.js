@@ -90,7 +90,9 @@ __webpack_require__.r(__webpack_exports__);
 
 class StaffList extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component) {
   render() {
-    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, this.props.staff.map(person => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_StaffListItem__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "staffFinder"
+    }, this.props.staff.map(person => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_StaffListItem__WEBPACK_IMPORTED_MODULE_1__["default"], {
       person: person
     })));
   }
