@@ -11,5 +11,10 @@
 	&.off{
 	  color: grey;
 	}
+
+
+  }
+  &.readonly{
+	pointer-events: none;
   }
 }

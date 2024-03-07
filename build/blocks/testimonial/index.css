@@ -24,5 +24,8 @@
 .stars .star.off {
   color: grey;
 }
+.stars.readonly {
+  pointer-events: none;
+}
 
 /*# sourceMappingURL=index.css.map*/

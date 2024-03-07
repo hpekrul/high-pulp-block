@@ -1,11 +1,12 @@
 // TODO: Import StarRating CSS and make readonly option with
+@import "../../components/StarRating";
 // .stars.readonly {
 //	pointer-events: none;
 //	.star {
 //		cursor: default;
 //	}
 
-.wp-block-tk-submit-review {
+.wp-block-hp-submit-review {
 	.new-review-form {
 		background-color: aliceblue;
 		padding: 20px;

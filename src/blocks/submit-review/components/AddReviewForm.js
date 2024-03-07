@@ -1,4 +1,5 @@
 import React from "react";
+import StarRating from "../../../components/StarRating";
 
 export default class AddReviewForm extends React.Component {
 	state = {
@@ -23,7 +24,14 @@ export default class AddReviewForm extends React.Component {
 
 		// we can't assume any props are provided
 		// ?. only calls the method if it exists
-		this.props.addReview?.(newReview);
+		//this.props.addReview?.(newReview);
+		//same as this
+		if(this.props && this.props.addReview){
+			this.props.addReview(newReview)
+		}
+
+		//clear the form
+		this.setState({title: '', review: '', rating: 0})
 	}
 
 	render() {
@@ -45,10 +53,11 @@ export default class AddReviewForm extends React.Component {
 				<div>
 					<label>
 						Overall Rating:
-						<input type="number"
-							   value={this.state.rating}
-							   onInput={e => this.setState({rating: e.target.value})}
-						/>
+						{/*<input type="number"*/}
+						{/*	   value={this.state.rating}*/}
+						{/*	   onInput={e => this.setState({rating: e.target.value})}*/}
+						{/*/>*/}
+						<StarRating rating={this.state.rating} setRating={rating => this.setState({rating})} />
 					</label>
 				</div>
 
