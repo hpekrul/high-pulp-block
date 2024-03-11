@@ -1,0 +1,57 @@
+// TODO: Import StarRating CSS and make readonly option with
+@import "../../components/StarRating";
+// .stars.readonly {
+//	pointer-events: none;
+//	.star {
+//		cursor: default;
+//	}
+
+.wp-block-hp-recipe-list {
+	.new-recipe-form {
+		background-color: aliceblue;
+		padding: 20px;
+		max-width: 300px;
+		box-shadow: 1px 1px 4px #bbb;
+		border-radius: 4px;
+
+		input, textarea {
+			width: 100%;
+		}
+	}
+
+	.error-msg {
+		background-color: #fc1a1a;
+		padding: 30px;
+		color: white;
+	}
+
+	.recipe-list {
+
+	}
+
+	.recipe-card {
+		width: 100%;
+		padding: 10px 15px;
+		margin: 10px;
+		border: 1px solid #888;
+		box-shadow: 1px 1px 3px #bbb;
+		border-radius: 4px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		flex-wrap: wrap;
+
+		.recipe-title {
+			font-weight: bold;
+		}
+
+		.recipe-content {
+			width: 100%;
+		}
+
+	}
+  .card{
+	width: 18rem;
+
+  }
+}

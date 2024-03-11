@@ -30,10 +30,14 @@ function high_pulp_blocks_high_pulp_blocks_block_init() {
 	register_block_type( __DIR__ . '/build/filters/border-control' );
 	register_block_type( __DIR__ . '/build/blocks/staff-finder' );
 	register_block_type( __DIR__ . '/build/blocks/submit-review' );
+	register_block_type( __DIR__ . '/build/blocks/recipe-form' );
+	register_block_type( __DIR__ . '/build/blocks/recipe-list' );
 	//register_block_type( __DIR__ . '/build/blocks/next-block' );
 
 	//load the Backbone JS client
 	wp_enqueue_script( 'wp-api' );
+
+	wp_enqueue_media();
 
 }
 add_action( 'init', 'high_pulp_blocks_high_pulp_blocks_block_init' );
