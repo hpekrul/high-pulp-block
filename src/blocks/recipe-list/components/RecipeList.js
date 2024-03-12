@@ -12,7 +12,7 @@ export default class RecipeList extends React.Component {
 								details={recipe.attributes.content.rendered}
 								rating={recipe.attributes.acf.recipe_rating}
 								link={recipe.attributes.acf.recipe_url}
-								image={recipe.attributes.acf.recipe_image}
+								image_id={recipe.attributes._embedded?.['wp:featuredmedia']['0']?.media_details?.sizes?.medium?.source_url}
 								key={recipe.attributes.id}
 					/>
 				))}

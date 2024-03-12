@@ -1,1 +1,54 @@
-.stars .star:hover{cursor:pointer}.stars .star.on{color:gold}.stars .star.off{color:gray}.stars.readonly{pointer-events:none}.wp-block-hp-recipe-list .new-recipe-form{background-color:#f0f8ff;border-radius:4px;box-shadow:1px 1px 4px #bbb;max-width:300px;padding:20px}.wp-block-hp-recipe-list .new-recipe-form input,.wp-block-hp-recipe-list .new-recipe-form textarea{width:100%}.wp-block-hp-recipe-list .error-msg{background-color:#fc1a1a;color:#fff;padding:30px}.wp-block-hp-recipe-list .recipe-card{align-items:center;border:1px solid #888;border-radius:4px;box-shadow:1px 1px 3px #bbb;display:flex;flex-wrap:wrap;justify-content:space-between;margin:10px;padding:10px 15px;width:100%}.wp-block-hp-recipe-list .recipe-card .recipe-title{font-weight:700}.wp-block-hp-recipe-list .recipe-card .recipe-content{width:100%}.wp-block-hp-recipe-list .card{width:18rem}
+/*!**********************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/blocks/recipe-list/style.scss ***!
+  \**********************************************************************************************************************************************************************************************************************************************************/
+.stars .star:hover {
+  cursor: pointer;
+}
+.stars .star.on {
+  color: #FFD700;
+}
+.stars .star.off {
+  color: grey;
+}
+.stars.readonly {
+  pointer-events: none;
+}
+
+.wp-block-hp-recipe-list .new-recipe-form {
+  background-color: aliceblue;
+  padding: 20px;
+  max-width: 300px;
+  box-shadow: 1px 1px 4px #bbb;
+  border-radius: 4px;
+}
+.wp-block-hp-recipe-list .new-recipe-form input, .wp-block-hp-recipe-list .new-recipe-form textarea {
+  width: 100%;
+}
+.wp-block-hp-recipe-list .error-msg {
+  background-color: #fc1a1a;
+  padding: 30px;
+  color: white;
+}
+.wp-block-hp-recipe-list .recipe-card {
+  width: 100%;
+  padding: 10px 15px;
+  margin: 10px;
+  border: 1px solid #888;
+  box-shadow: 1px 1px 3px #bbb;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.wp-block-hp-recipe-list .recipe-card .recipe-title {
+  font-weight: bold;
+}
+.wp-block-hp-recipe-list .recipe-card .recipe-content {
+  width: 100%;
+}
+.wp-block-hp-recipe-list .card {
+  width: 18rem;
+}
+
+/*# sourceMappingURL=style-index.css.map*/

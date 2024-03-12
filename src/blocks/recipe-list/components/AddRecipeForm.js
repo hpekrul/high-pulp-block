@@ -7,7 +7,7 @@ export default class AddRecipeForm extends React.Component {
 		details: '',
 		rating: 0,
 		link: '',
-		image: '',
+		image_id: '',
 
 	};
 
@@ -19,36 +19,45 @@ export default class AddRecipeForm extends React.Component {
 			content: this.state.details,
 			acf: {
 				recipe_rating: parseInt(this.state.rating) || 0,
-				recipe_image: this.state.image,
+				//recipe_image: this.state.image,
 				recipe_url: this.state.link
 			},
+			featured_media: this.state.image_id,
 
 			// maybe you should validate better before doing this?
 			status: 'publish',
 		}
+
 
 		// we can't assume any props are provided
 		// ?. only calls the method if it exists
 		this.props.addRecipe?.(newRecipe);
 
 		//clear the form
-		this.setState({title: '', details: '', rating: 0, link: '', image: '',})
+		this.setState({title: '', details: '', rating: 0, link: '', image_id: '',})
 	}
 
-	// image = wp.media({
-	// 	title: 'Upload Image',
-	// 	type: 'image',
-	// 	multiple: false,
-	// 	button: {
-	// 		text: 'Done'
-	// 	}
-	//
-	// 	image.on('select', function(e){
-	// 		var uploaded_image = image.state().get('selection').first();
-	// 		var image_id = uploaded_image.toJSON().id;
-	// 		$('input#image-id').val(image_id);
-	// 	});
-	// }).open()
+		pickImage(){
+			var image = wp.media({
+				title: 'Upload Image',
+				type: 'image',
+				multiple: false,
+				button: {
+					text: 'Done'
+				}
+			}).open()
+
+			image.on('select', (e) =>{
+				var uploaded_image = image.state().get('selection').first();
+				var image_id = uploaded_image.toJSON().id;
+				// $('input#image-id').val(image_id);
+				this.setState({image_id: image_id})
+			});
+
+
+		}
+
+
 
 
 
@@ -59,18 +68,9 @@ export default class AddRecipeForm extends React.Component {
 				className="new-recipe-form"
 				onSubmit={e => this.addRecipe(e)}
 			>
-				{/*<div>*/}
-				{/*	<label>*/}
-				{/*		Recipe Image:*/}
-				{/*		<input type="file"*/}
-				{/*			   accept="image/*"*/}
-				{/*			   onInput={e => this.setState({image: e.target.files[0]})}*/}
-				{/*			   />*/}
-				{/*	</label>*/}
-				{/*</div>*/}
 				<div>
-					<button type="submit"
-						onSelect={this.image}
+					<button type="button"
+						onClick={e => this.pickImage()}
 					>Upload Image</button>
 				</div>
 				<div>

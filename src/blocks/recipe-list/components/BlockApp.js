@@ -19,17 +19,10 @@ export default class BlockApp extends React.Component {
 		})
 	}
 
-	addMedia(newMedia){
-		const media = new wp.api.models.Media(newMedia);
-		media.save()
-			.done(data => {
-				console.log('saved', data);
-			})
-	}
 	getRecipes(){
 		// by default, this gives us 10
 		const recipeCollection = new wp.api.collections.Recipe();
-		recipeCollection.fetch()
+		recipeCollection.fetch({data: { _embed: true}})
 			.done(data => {
 				console.log('recipes!', data, recipeCollection);
 				// store the models in our state
